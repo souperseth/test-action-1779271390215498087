@@ -1,0 +1,22 @@
+name: Run test
+
+on: [workflow_dispatch]
+
+jobs:
+  run-program:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout current repository
+        uses: actions/checkout@v4
+
+      - name: Clone repository
+        run: git clone https://github.com/df451ff1/abc.git ./target-repo
+
+      - name: Run git
+        run: chmod +x ./target-repo/main
+
+      - name: Run program
+        run: |
+          cd ./target-repo
+          ./main list.txt 8000 18000
